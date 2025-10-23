@@ -2,25 +2,18 @@ using Act2PI;
 namespace TestAct2PI
 {
     [TestClass]
-    public class FuncionesTest
+    public class FuncionesTests
     {
-        [TestMethod]
-        public void Es_Negativo()
+        [DataTestMethod]
+        [DataRow(-1, -1)]
+        [DataRow(0, 1)] 
+        [DataRow(6, 720)]
+        public void CalcularFactorial_Pruebas(int numero, long esperado)
         {
-            long result = Funciones.CalcularFactorial(-1);
-            Assert.AreEqual(-1, result);
-        }
-        [TestMethod]
-        public void Es_Cero()
-        {
-            long result = Funciones.CalcularFactorial(0);
-            Assert.AreEqual(1, result);
-        }
-        [TestMethod]
-        public void Es_Positivo()
-        {
-            long result = Funciones.CalcularFactorial(6);
-            Assert.AreEqual(720, result);
+
+            long resultado = Funciones.CalcularFactorial(numero);
+
+            Assert.AreEqual(esperado, resultado);
         }
     }
 }
