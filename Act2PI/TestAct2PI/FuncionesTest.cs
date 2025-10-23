@@ -15,7 +15,6 @@ namespace TestAct2PI
 
             Assert.AreEqual(esperado, resultado);
         }
-
         [DataTestMethod]
 
         [DataRow("")]
