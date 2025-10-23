@@ -15,36 +15,27 @@ namespace TestAct2PI
 
             Assert.AreEqual(esperado, resultado);
         }
-        [TestMethod]
-        public void ContrasenyaVacia()
+
+        [DataTestMethod]
+
+        [DataRow("")]
+        [DataRow(null)]
+        [DataRow("a#123")]
+        [DataRow("abcdefgh")]
+        public void ContrasenyaInvalida(string contrasenya)
         {
-            string contrasenya = "";
             bool resultado = Funciones.EsContrasenyaValida(contrasenya);
             Assert.IsFalse(resultado);
         }
 
-        [TestMethod]
-        public void ContrasenyaNull()
+        [DataTestMethod]
+        [DataRow("abc12345#")]
+        [DataRow("abcd123#")]
+        [DataRow("1234567#")]
+        public void ContrasenyaValida(string contrasenya)
         {
-            string contrasenya = null;
             bool resultado = Funciones.EsContrasenyaValida(contrasenya);
-            Assert.IsFalse(resultado);
-        }
-
-        [TestMethod]
-        public void ContrasenyaCorta()
-        {
-            string contrasenya = "a#123";
-            bool resultado = Funciones.EsContrasenyaValida(contrasenya);
-            Assert.IsFalse(resultado);
-        }
-
-        [TestMethod]
-        public void ContrasenyaSinHashtag()
-        {
-            string contrasenya = "abcdefgh";
-            bool resultado = Funciones.EsContrasenyaValida(contrasenya);
-            Assert.IsFalse(resultado);
+            Assert.IsTrue(resultado);
         }
     }
 }

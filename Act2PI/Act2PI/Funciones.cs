@@ -38,10 +38,6 @@ namespace Act2PI
 
             return true;
         }
-        public static bool EsContrasenyaValida(string contrasenya)
-        {
-            return true;
-        }
     }
 }
     
